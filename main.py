@@ -3,11 +3,17 @@
 # throughout this file
 import pygame
 from constants import *
+from player import Player
+
 
 def main():
     pygame.init()
     clock = pygame.time.Clock()
     dt = 0
+    player = Player(
+            x=SCREEN_WIDTH / 2,
+            y=SCREEN_HEIGHT / 2
+        )
 
     print("Starting Asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
@@ -20,6 +26,8 @@ def main():
                 return
             
         screen.fill((0,0,0))
+        player.draw(screen)
+        player.update(dt)
         pygame.display.flip()
 
         #limits the framerate to 60 FPS
